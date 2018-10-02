@@ -59,7 +59,7 @@ async function google(req, res) {
     if(!googleUser) {
         return res.status(403).json({
             ok: false,
-            msg: 'Error en la autenticación'
+            msg: 'Google auth error'
         });
     }
 
