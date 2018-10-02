@@ -51,14 +51,17 @@ async function verify(token) {
 
 async function google(req, res) {
     let token = req.body.idtoken;
-    //console.log('token', token);
 
     let googleUser = await verify(token).catch( e => {
+        console.log('Error en la autenticación')
+    });
+
+    if(!googleUser) {
         return res.status(403).json({
             ok: false,
-            err: e
+            msg: 'Error en la autenticación'
         });
-    });
+    }
 
     User.findOne({ email: googleUser.email }, (err, userDB) => {
         if(err) {
