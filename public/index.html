@@ -21,7 +21,7 @@
             if (response.status === 'connected') {
                 // Logged into your app and Facebook.
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/facebook');
+                xhr.open('POST', '/login/facebook');
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 xhr.setRequestHeader('Authorization', "Bearer " + response.authResponse.accessToken);
                 xhr.onload = function () {
@@ -109,7 +109,7 @@
             var id_token = googleUser.getAuthResponse().id_token;
             //console.log(id_token);
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/google');
+            xhr.open('POST', '/login/google');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 console.log('Signed in as: ', xhr.responseText);
