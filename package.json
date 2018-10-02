@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Restaurant API",
   "private": true,
+  "engines": { 
+      "node": "8.11.3" 
+  },
   "scripts": {
     "start": "node ./bin/www",
     "nodemon": "nodemon ./bin/www"
