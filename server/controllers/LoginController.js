@@ -58,8 +58,10 @@ async function google(req, res) {
 
     if(!googleUser) {
         return res.status(403).json({
-            ok: false,
-            msg: 'Google auth error'
+            ok: false, 
+            err: {
+                message: 'Google auth error'
+            }
         });
     }
 
