@@ -8,7 +8,7 @@ router.route('/')
     .post(usersController.create);
 
 router.route('/:id')
-    .put(usersController.update)
+    .put(usersController.find, usersController.update)
     .delete(usersController.destroy);
 
 module.exports = router;

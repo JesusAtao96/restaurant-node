@@ -2,6 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 const buildParams = require('./helpers').buildParams;
+const validParamsCreate = ["name", "email", "password"];
 const validParams = ["name", "email", "img", "state"];
 
 function index(req, res) {
@@ -26,34 +27,39 @@ function index(req, res) {
         })
 }
 
-function create(req, res) {
-    let body = req.body;
-
-    let user = new User({
-        name: body.name,
-        email: body.email,
-        password: bcrypt.hashSync(body.password, 10)
-    });
-
-    user.save((err, userDB) => {
-        if(err) {
-            return res.status(400).json({ ok: false, err });
-        }
-
-        res.json({ ok: true, user: userDB });
+function find(req, res, next) {
+    console.log(req.params.id)
+    User.findOne({'_id': req.params.id}).then(user => {
+        req.user = user;
+        next();
+    }).catch(err => {
+        next(err);
     });
 }
 
-function update(req, res) {
-    let id = req.params.id
-    let body = buildParams(validParams, req.body);
+function create(req, res) {
+    let params = buildParams(validParamsCreate, req.body);
 
-    User.findByIdAndUpdate(id, body, {new: true, runValidators: true}, (err, userDB) => {
-        if(err) {
-            return res.status(400).json({ ok: false, err });
-        }
-        
+    User.create(params)
+        .then(userDB => {
+            res.json({ ok: true, user: userDB });
+        }).catch(err => {
+            if(err) {
+                return res.status(400).json({ ok: false, err });
+            }
+        })
+}
+
+function update(req, res) {
+    // Actualizar un recurso
+    const params = buildParams(validParams, req.body);
+
+    req.user = Object.assign(req.user, params);
+
+    req.user.save().then(userDB => { 
         res.json({ ok: true, user: userDB });
+    }).catch(err => {
+        return res.status(400).json({ ok: false, err });
     });
 }
 
@@ -72,4 +78,4 @@ function destroy(req, res) {
     });
 }
 
-module.exports = { index, create, update, destroy };
+module.exports = { index, find, create, update, destroy };
