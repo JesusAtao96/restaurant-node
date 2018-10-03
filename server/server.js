@@ -23,6 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
+// Configuración global de rutas
+app.use(require('./routes/index'));
+
 // Habilitar la carpeta public
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -33,9 +36,6 @@ app.get('*', (req, res) => {
 
 // Habilitar cors
 app.use(cors());
-
-// Configuración global de rutas
-app.use(require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

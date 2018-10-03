@@ -27,7 +27,7 @@ function index(req, res) {
 }
 
 function create(req, res) {
-    let body = buildParams(validParams, req.body);
+    let body = req.body;
 
     let user = new User({
         name: body.name,
