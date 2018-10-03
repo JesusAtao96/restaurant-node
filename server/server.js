@@ -26,6 +26,11 @@ app.use(cookieParser());
 // Habilitar la carpeta public
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Catch all other routes request and return it to the index
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'))
+});
+
 // Habilitar cors
 app.use(cors());
 
