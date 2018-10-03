@@ -17,6 +17,8 @@ function login(req, res) {
             return res.status(400).json({ ok: false, err: { message: 'Incorrect username or password' } });
         }
 
+        console.log(body.password, userDB.password);
+        console.log(bcrypt.compareSync(body.password, userDB.password));
         if(!bcrypt.compareSync(body.password, userDB.password)) {
             return res.status(400).json({ ok: false, err: { message: 'Incorrect username or password' } });
         }

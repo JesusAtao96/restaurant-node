@@ -13,7 +13,7 @@ function index(req, res) {
     limit = Number(limit);
 
     //console.log('from, limit', from, limit);
-    User.find({state: true}, 'name email state google img')
+    User.find({state: true}, 'name email state google facebook img')
         .skip(from)
         .limit(limit)
         .exec((err, users) => {
@@ -39,6 +39,10 @@ function find(req, res, next) {
 
 function create(req, res) {
     let params = buildParams(validParamsCreate, req.body);
+
+    if(params.password) {
+        params.password = bcrypt.hashSync(params.password, 10);
+    }
 
     User.create(params)
         .then(userDB => {
