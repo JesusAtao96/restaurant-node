@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "short_name": "app",
+  "name": "Restaurant App",
+  "short_name": "Restauran",
   "theme_color": "#c8264a",
   "background_color": "#c8264a",
   "display": "standalone",
