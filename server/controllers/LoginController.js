@@ -35,6 +35,7 @@ function login(req, res) {
 
 // Configuracioens de Google => https://developers.google.com/identity/sign-in/web/backend-auth
 async function verify(token) {
+    console.log(token, process.env.CLIENT_ID);
     const ticket = await client.verifyIdToken({
         idToken: token,
         audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
