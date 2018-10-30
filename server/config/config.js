@@ -29,5 +29,5 @@ process.env.URLDB = urlDB;
 process.env.CLIENT_ID = process.env.CLIENT_ID || '957816712825-l4rf1bio6q3l34uq1ucck7tunf2dlj2u.apps.googleusercontent.com';
 
 // Facebook Client ID y secret
-process.env.FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID || '2268545880030357';
-process.env.FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_SECRET || 'bf306ea82968f3cca5f4581c91079692';
+process.env.FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID || '740694546280556';
+process.env.FACEBOOK_APP_SECRET = process.env.FACEBOOK_APP_SECRET || '1dd4cb9cac0466c718196fccda8889de';
