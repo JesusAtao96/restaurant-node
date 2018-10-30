@@ -26,7 +26,7 @@ if(process.env.NODE_ENV === 'dev') {
 process.env.URLDB = urlDB;
 
 // Google Client ID
-process.env.CLIENT_ID = process.env.CLIENT_ID || '297605043339-epodk1tohieqso9nqcdgu7eukgk6mlrh.apps.googleusercontent.com';
+process.env.CLIENT_ID = process.env.CLIENT_ID || '957816712825-l4rf1bio6q3l34uq1ucck7tunf2dlj2u.apps.googleusercontent.com';
 
 // Facebook Client ID y secret
 process.env.FACEBOOK_APP_ID = process.env.FACEBOOK_APP_ID || '2268545880030357';
